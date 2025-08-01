@@ -1,7 +1,8 @@
 package com.seatcode.mowerengine.model
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 
 class DirectionTest {
     companion object {
@@ -23,10 +24,10 @@ class DirectionTest {
 
         @JvmStatic
         fun moveForwardCases() = listOf(
-            arrayOf(Direction.NORTH, Position(1, 1), Position(1, 2)),
-            arrayOf(Direction.EAST, Position(1, 1), Position(2, 1)),
-            arrayOf(Direction.SOUTH, Position(1, 1), Position(1, 0)),
-            arrayOf(Direction.WEST, Position(1, 1), Position(0, 1))
+            arrayOf(Direction.NORTH, Coordinates(1, 1), Coordinates(1, 2)),
+            arrayOf(Direction.EAST, Coordinates(1, 1), Coordinates(2, 1)),
+            arrayOf(Direction.SOUTH, Coordinates(1, 1), Coordinates(1, 0)),
+            arrayOf(Direction.WEST, Coordinates(1, 1), Coordinates(0, 1))
         )
     }
 
@@ -37,7 +38,7 @@ class DirectionTest {
         expected: Direction
     ) {
         // Act
-        val result = origin.rotateLeft()
+        val result: Direction = origin.rotateLeft()
         // Assert
         assertEquals(expected, result, "rotateLeft from $origin should return $expected")
     }
@@ -49,20 +50,20 @@ class DirectionTest {
         expected: Direction
     ) {
         // Act
-        val result = origin.rotateRight()
+        val result: Direction = origin.rotateRight()
         // Assert
         assertEquals(expected, result, "rotateRight from $origin should return $expected")
     }
 
     @ParameterizedTest
     @MethodSource("moveForwardCases")
-    fun `moveForward should return correct position`(
+    fun `moveForward should return correct coordinates`(
         direction: Direction,
-        start: Position,
-        expected: Position
+        start: Coordinates,
+        expected: Coordinates
     ) {
         // Act
-        val result = direction.moveForward(start)
+        val result: Coordinates = direction.moveForward(start)
         // Assert
         assertEquals(expected, result, "moveForward from $direction at $start should return $expected")
     }
