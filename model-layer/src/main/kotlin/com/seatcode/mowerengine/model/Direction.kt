@@ -1,6 +1,6 @@
 package com.seatcode.mowerengine.model
 
-sealed interface class Direction {
+sealed class Direction {
     abstract fun rotateLeft(): Direction
     abstract fun rotateRight(): Direction
     abstract fun moveForward(coordinates: Coordinates): Coordinates

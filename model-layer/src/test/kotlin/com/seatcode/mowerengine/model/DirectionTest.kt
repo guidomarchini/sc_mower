@@ -1,7 +1,8 @@
 package com.seatcode.mowerengine.model
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 
 class DirectionTest {
     companion object {
@@ -37,7 +38,7 @@ class DirectionTest {
         expected: Direction
     ) {
         // Act
-        val result = origin.rotateLeft()
+        val result: Direction = origin.rotateLeft()
         // Assert
         assertEquals(expected, result, "rotateLeft from $origin should return $expected")
     }
@@ -49,7 +50,7 @@ class DirectionTest {
         expected: Direction
     ) {
         // Act
-        val result = origin.rotateRight()
+        val result: Direction = origin.rotateRight()
         // Assert
         assertEquals(expected, result, "rotateRight from $origin should return $expected")
     }
@@ -62,7 +63,7 @@ class DirectionTest {
         expected: Coordinates
     ) {
         // Act
-        val result = direction.moveForward(start)
+        val result: Coordinates = direction.moveForward(start)
         // Assert
         assertEquals(expected, result, "moveForward from $direction at $start should return $expected")
     }
