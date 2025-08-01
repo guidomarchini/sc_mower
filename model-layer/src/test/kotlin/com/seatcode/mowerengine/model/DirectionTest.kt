@@ -23,10 +23,10 @@ class DirectionTest {
 
         @JvmStatic
         fun moveForwardCases() = listOf(
-            arrayOf(Direction.NORTH, Position(1, 1), Position(1, 2)),
-            arrayOf(Direction.EAST, Position(1, 1), Position(2, 1)),
-            arrayOf(Direction.SOUTH, Position(1, 1), Position(1, 0)),
-            arrayOf(Direction.WEST, Position(1, 1), Position(0, 1))
+            arrayOf(Direction.NORTH, Coordinates(1, 1), Coordinates(1, 2)),
+            arrayOf(Direction.EAST, Coordinates(1, 1), Coordinates(2, 1)),
+            arrayOf(Direction.SOUTH, Coordinates(1, 1), Coordinates(1, 0)),
+            arrayOf(Direction.WEST, Coordinates(1, 1), Coordinates(0, 1))
         )
     }
 
@@ -56,10 +56,10 @@ class DirectionTest {
 
     @ParameterizedTest
     @MethodSource("moveForwardCases")
-    fun `moveForward should return correct position`(
+    fun `moveForward should return correct coordinates`(
         direction: Direction,
-        start: Position,
-        expected: Position
+        start: Coordinates,
+        expected: Coordinates
     ) {
         // Act
         val result = direction.moveForward(start)

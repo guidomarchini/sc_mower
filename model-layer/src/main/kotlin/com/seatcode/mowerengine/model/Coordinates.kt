@@ -1,6 +1,6 @@
 package com.seatcode.mowerengine.model
 
-data class Position(
+data class Coordinates(
     val x: Int,
     val y: Int
 )
