@@ -14,26 +14,25 @@ sealed interface class Direction {
 }
 
 object North : Direction() {
-    override fun rotateLeft() = Direction.WEST
-    override fun rotateRight() = Direction.EAST
-    override fun moveForward(position: Position) = position.copy(y = position.y + 1)
+    override fun rotateLeft(): Direction = Direction.WEST
+    override fun rotateRight(): Direction = Direction.EAST
+    override fun moveForward(position: Position): Position = position.copy(y = position.y + 1)
 }
 
 object South : Direction() {
-    override fun rotateLeft() = Direction.EAST
-    override fun rotateRight() = Direction.WEST
-    override fun moveForward(position: Position) = position.copy(y = position.y - 1)
+    override fun rotateLeft(): Direction = Direction.EAST
+    override fun rotateRight(): Direction = Direction.WEST
+    override fun moveForward(position: Position): Position = position.copy(y = position.y - 1)
 }
 
 object East : Direction() {
-    override fun rotateLeft() = Direction.NORTH
-    override fun rotateRight() = Direction.SOUTH
-    override fun moveForward(position: Position) = position.copy(x = position.x + 1)
+    override fun rotateLeft(): Direction = Direction.NORTH
+    override fun rotateRight(): Direction = Direction.SOUTH
+    override fun moveForward(position: Position): Position = position.copy(x = position.x + 1)
 }
 
 object West : Direction() {
-    override fun rotateLeft() = Direction.SOUTH
-    override fun rotateRight() = Direction.NORTH
-    override fun moveForward(position: Position) = position.copy(x = position.x - 1)
+    override fun rotateLeft(): Direction = Direction.SOUTH
+    override fun rotateRight(): Direction = Direction.NORTH
+    override fun moveForward(position: Position): Position = position.copy(x = position.x - 1)
 }
-
