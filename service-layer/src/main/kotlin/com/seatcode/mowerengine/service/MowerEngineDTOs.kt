@@ -5,7 +5,7 @@ import com.seatcode.mowerengine.model.*
 data class MowerEngineInput(
     val plateauMaxX: Int,
     val plateauMaxY: Int,
-    val mowers: List<MowerInitData>
+    val mowerInitDatas: List<MowerInitData>
 )
 
 data class MowerInitData(

@@ -17,7 +17,7 @@ class MowerEngine @Autowired constructor(
 
         val plateau: Plateau = Plateau(input.plateauMaxX, input.plateauMaxY)
 
-        val mowersWithActions: List<MowerWithActions> = input.mowers.map { initData ->
+        val mowersWithActions: List<MowerWithActions> = input.mowerInitDatas.map { initData ->
             val mower: Mower = Mower(initData.coordinates, initData.direction)
             plateau.addMower(mower)
             MowerWithActions(mower, initData.actions)

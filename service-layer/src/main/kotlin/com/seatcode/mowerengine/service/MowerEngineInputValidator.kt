@@ -8,7 +8,7 @@ object MowerEngineInputValidator {
         require(input.plateauMaxY >= 0) { "Plateau maxY must be non-negative" }
 
         val seenCoordinates: MutableSet<Coordinates> = mutableSetOf()
-        input.mowers.forEach { initData ->
+        input.mowerInitDatas.forEach { initData ->
             require(initData.coordinates.x >= 0 && initData.coordinates.x <= input.plateauMaxX) {
                 "Mower x coordinate out of plateau bounds: ${initData.coordinates.x}"
             }
