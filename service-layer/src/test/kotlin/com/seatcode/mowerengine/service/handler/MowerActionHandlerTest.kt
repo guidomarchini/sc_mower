@@ -1,4 +1,4 @@
-package com.seatcode.mowerengine.service
+package com.seatcode.mowerengine.service.handler
 
 import com.seatcode.mowerengine.model.*
 import org.junit.jupiter.api.Assertions.assertEquals

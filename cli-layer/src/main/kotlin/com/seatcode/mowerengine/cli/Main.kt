@@ -2,6 +2,7 @@ package com.seatcode.mowerengine.cli
 
 import com.seatcode.mowerengine.adapter.MowerEngineIOParser
 import com.seatcode.mowerengine.service.*
+import com.seatcode.mowerengine.service.utils.LoggingMowerEngineDecorator
 
 fun main() {
     println("Enter the top right corner of the plateau (e.g., 5 5):")
@@ -19,7 +20,7 @@ fun main() {
 
     val input: String = listOf(plateau, mower1, actions1, mower2, actions2).joinToString("\n")
 
-    val engine: MowerEngineContract = MowerEngine(
+    val engine: MowerEngineContract = SequentialMowerEngine(
         listOf(RotateLeftHandler(), RotateRightHandler(), MoveForwardHandler())
     )
     val loggingEngine: MowerEngineContract = LoggingMowerEngineDecorator(engine)
