@@ -22,5 +22,6 @@ class Mower(
 
     fun getCurrentCoordinates(): Coordinates = this.coordinates
     fun getCurrentDirection(): Direction = this.direction
-}
 
+    override fun toString(): String = "Mower(${coordinates}, ${direction})"
+}

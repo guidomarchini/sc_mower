@@ -1,7 +1,7 @@
 package com.seatcode.mowerengine.weblayer
 
 import com.seatcode.mowerengine.adapter.MowerEngineIOParser
-import com.seatcode.mowerengine.service.MowerEngine
+import com.seatcode.mowerengine.service.MowerEngineContract
 import com.seatcode.mowerengine.service.MowerEngineInput
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 @Tag(name = "Mower Engine", description = "Endpoints for executing mower engine commands")
 @RestController
 class MowerEngineV1Controller @Autowired constructor(
-    private val mowerEngine: MowerEngine
+    private val mowerEngine: MowerEngineContract
 ) {
     @Operation(summary = "Execute mower engine commands", description = "Receives a multiline string with plateau and mower instructions, returns final mower positions.")
     @PostMapping("/api/v1/execute")
