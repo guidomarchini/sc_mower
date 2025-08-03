@@ -3,11 +3,8 @@ package com.seatcode.mowerengine.service
 import com.seatcode.mowerengine.model.Mower
 import com.seatcode.mowerengine.model.MowerAction
 import com.seatcode.mowerengine.model.Plateau
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
 
-@Service
-class MowerEngine @Autowired constructor(
+class MowerEngine(
     handlers: List<MowerActionHandler>
 ) {
     private val handlerMap: Map<MowerAction, MowerActionHandler> = handlers.associateBy { it.action }

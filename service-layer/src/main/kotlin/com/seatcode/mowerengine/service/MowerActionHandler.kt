@@ -1,26 +1,22 @@
 package com.seatcode.mowerengine.service
 
 import com.seatcode.mowerengine.model.*
-import org.springframework.stereotype.Component
 
 sealed class MowerActionHandler {
     abstract val action: MowerAction
     abstract fun handle(mower: Mower, plateau: Plateau): Unit
 }
 
-@Component
 class RotateLeftHandler : MowerActionHandler() {
     override val action: MowerAction = RotateLeft
     override fun handle(mower: Mower, plateau: Plateau): Unit = mower.rotateLeft()
 }
 
-@Component
 class RotateRightHandler : MowerActionHandler() {
     override val action: MowerAction = RotateRight
     override fun handle(mower: Mower, plateau: Plateau): Unit = mower.rotateRight()
 }
 
-@Component
 class MoveForwardHandler : MowerActionHandler() {
     override val action: MowerAction = MoveForward
 
