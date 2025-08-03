@@ -1,6 +1,7 @@
 package com.seatcode.mowerengine.weblayer
 
 import com.seatcode.mowerengine.service.*
+import com.seatcode.mowerengine.service.utils.LoggingMowerEngineDecorator
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -20,7 +21,7 @@ open class MowerEngineConfig {
         rotateLeftHandler: RotateLeftHandler,
         rotateRightHandler: RotateRightHandler,
         moveForwardHandler: MoveForwardHandler
-    ): MowerEngineContract = LoggingMowerEngineDecorator(MowerEngine(
+    ): MowerEngineContract = LoggingMowerEngineDecorator(SequentialMowerEngine(
         listOf(rotateLeftHandler, rotateRightHandler, moveForwardHandler)
     ))
 }

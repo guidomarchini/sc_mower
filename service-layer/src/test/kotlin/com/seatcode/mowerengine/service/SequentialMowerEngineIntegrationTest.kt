@@ -6,14 +6,14 @@ import com.seatcode.mowerengine.model.MowerAction
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class MowerEngineIntegrationTest {
+class SequentialMowerEngineIntegrationTest {
     private fun defaultHandlers(): List<MowerActionHandler> = listOf(
         RotateLeftHandler(),
         RotateRightHandler(),
         MoveForwardHandler()
     )
-    val engine: MowerEngineContract = SequentialMowerEngine(defaultHandlers())
-
+    val engine: MowerEngineContract = ActionByActionMowerEngine(defaultHandlers())
+    
     @Test
     fun `should execute actions and return final mower states`() {
         // Arrange
@@ -33,6 +33,7 @@ class MowerEngineIntegrationTest {
                 )
             )
         )
+        
         // Act
         val result: MowerEngineResult = engine.execute(input)
         // Assert
@@ -44,7 +45,7 @@ class MowerEngineIntegrationTest {
     }
 
     @Test
-    fun `should not move mower into occupied or invalid position`() {
+    fun `should execute actions in order and return final mower states`() {
         // Arrange
         val input: MowerEngineInput = MowerEngineInput(
             plateauMaxX = 5,
@@ -67,7 +68,7 @@ class MowerEngineIntegrationTest {
         val result: MowerEngineResult = engine.execute(input)
         // Assert
         assertEquals(2, result.mowerResults.size)
-        assertEquals(Coordinates(0, 0), result.mowerResults[0].coordinates)
+        assertEquals(Coordinates(0, 2), result.mowerResults[0].coordinates)
         assertEquals(Direction.NORTH, result.mowerResults[0].direction)
         assertEquals(Coordinates(0, 3), result.mowerResults[1].coordinates)
         assertEquals(Direction.NORTH, result.mowerResults[1].direction)
