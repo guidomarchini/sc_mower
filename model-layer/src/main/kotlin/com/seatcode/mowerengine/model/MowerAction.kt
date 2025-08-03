@@ -8,6 +8,12 @@ sealed interface MowerAction {
     }
 }
 
-object RotateLeft : MowerAction
-object RotateRight : MowerAction
-object MoveForward : MowerAction
+object RotateLeft : MowerAction {
+    override fun toString(): String = "Rotate Left"
+}
+object RotateRight : MowerAction {
+    override fun toString(): String = "Rotate Right"
+}
+object MoveForward : MowerAction {
+    override fun toString(): String = "Move Forward"
+}
