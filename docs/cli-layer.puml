@@ -1,0 +1,16 @@
+@startuml
+' Adapter Layer Class Diagram
+
+package "adapter-layer" {
+  class MowerEngineIOParser
+}
+
+package "cli-layer" {
+  class Main
+}
+
+' Relationships
+Main ..> MowerEngineIOParser : uses
+
+@enduml
+

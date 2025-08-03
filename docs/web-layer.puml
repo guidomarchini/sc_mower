@@ -6,6 +6,9 @@ package web-layer {
     class RootRedirectController <<Controller>>
     class GlobalExceptionHandler <<ControllerAdvice>>
     class MowerEngineV1Controller <<RestController>>
+}
+
+package adapter-layer {
     class MowerEngineIOParser <<Object>>
 }
 
