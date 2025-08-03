@@ -1,0 +1,19 @@
+@startuml
+' Web Layer Class Diagram
+
+package web-layer {
+    class ScMowerApplication <<Application>>
+    class RootRedirectController <<Controller>>
+    class GlobalExceptionHandler <<ControllerAdvice>>
+    class MowerEngineV1Controller <<RestController>>
+    class MowerEngineIOParser <<Object>>
+}
+
+' Relationships
+ScMowerApplication --> RootRedirectController : creates
+ScMowerApplication --> GlobalExceptionHandler : creates
+ScMowerApplication --> MowerEngineV1Controller : creates
+MowerEngineV1Controller --> MowerEngineIOParser : uses
+
+@enduml
+

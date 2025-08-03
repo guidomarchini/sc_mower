@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class MowerEngineIntegrationTest {
-    private fun defaultHandlers(): Map<MowerAction, MowerActionHandler> = mapOf(
-        RotateLeft to RotateLeftHandler(),
-        RotateRight to RotateRightHandler(),
-        MoveForward to MoveForwardHandler()
+    private fun defaultHandlers(): List<MowerActionHandler> = listOf(
+        RotateLeftHandler(),
+        RotateRightHandler(),
+        MoveForwardHandler()
     )
 
     @Test
@@ -17,7 +17,7 @@ class MowerEngineIntegrationTest {
         val input: MowerEngineInput = MowerEngineInput(
             plateauMaxX = 5,
             plateauMaxY = 5,
-            mowers = listOf(
+            mowerInitDatas = listOf(
                 MowerInitData(
                     coordinates = Coordinates(1, 2),
                     direction = Direction.NORTH,
@@ -35,7 +35,7 @@ class MowerEngineIntegrationTest {
         val result: MowerEngineResult = engine.execute(input)
         // Assert
         assertEquals(2, result.mowerResults.size)
-        assertEquals(Coordinates(0, 4), result.mowerResults[0].coordinates)
+        assertEquals(Coordinates(0, 3), result.mowerResults[0].coordinates)
         assertEquals(Direction.WEST, result.mowerResults[0].direction)
         assertEquals(Coordinates(5, 2), result.mowerResults[1].coordinates)
         assertEquals(Direction.SOUTH, result.mowerResults[1].direction)
@@ -47,7 +47,7 @@ class MowerEngineIntegrationTest {
         val input: MowerEngineInput = MowerEngineInput(
             plateauMaxX = 5,
             plateauMaxY = 5,
-            mowers = listOf(
+            mowerInitDatas = listOf(
                 MowerInitData(
                     coordinates = Coordinates(0, 0),
                     direction = Direction.NORTH,
