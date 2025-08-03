@@ -1,57 +1,56 @@
 @startuml
-' Model Layer Class Diagram for MowerEngine
+' Model Layer Class Diagram
 
 package "model-layer" {
 
-class Coordinates {
-  x: Int
-  y: Int
+    class Coordinates {
+        x: Int
+        y: Int
+    }
+
+    abstract class Direction {
+        +rotateLeft(): Direction
+        +rotateRight(): Direction
+        +moveForward(position: Coordinates): Coordinates
+    }
+
+    class North
+    class South
+    class East
+    class West
+
+    class Mower {
+        position: Coordinates
+        direction: Direction
+        +getCurrentCoordinates(): Coordinates
+        +getCurrentDirection(): Direction
+        ...
+    }
+
+    abstract class MowerAction
+    class RotateLeft
+    class RotateRight
+    class MoveForward
+
+    class Plateau {
+        maxX: Int
+        maxY: Int
+        +addMower(mower: Mower): Boolean
+        +areValidCoordinates(coordinates: Coordinates): Boolean
+        ...
+    }
 }
 
-abstract class Direction {
-  +rotateLeft(): Direction
-  +rotateRight(): Direction
-  +moveForward(position: Coordinates): Coordinates
-}
-
-class North
-class South
-class East
-class West
-
+' Relationships
 Direction <|-- North
 Direction <|-- South
 Direction <|-- East
 Direction <|-- West
-
-class Mower {
-  position: Coordinates
-  direction: Direction
-  +getCurrentCoordinates(): Coordinates
-  +getCurrentDirection(): Direction
-  ...
-}
-
-abstract class MowerAction
-class RotateLeft
-class RotateRight
-class MoveForward
-
 MowerAction <|-- RotateLeft
 MowerAction <|-- RotateRight
 MowerAction <|-- MoveForward
-
-class Plateau {
-  maxX: Int
-  maxY: Int
-  +addMower(mower: Mower): Boolean
-  +areValidCoordinates(coordinates: Coordinates): Boolean
-  ...
-}
-
 Mower --> Coordinates
 Mower --> Direction
 Plateau --> Mower
 
-}
 @enduml
