@@ -31,7 +31,9 @@ The application allows controlling robotic mowers on a rectangular plateau, proc
 - If a mower tries to move to an invalid or occupied position, it stays in place.
 - The domain and service layers are pure Kotlin, with no Spring dependencies.
 - Parsers and mappers are placed in the adapter-layer for reuse across interfaces.
-
+- Some model classes are visible in the web-layer because they are simple. More complex models are encapsulated in the service layer (ex: Plateau).
+- The previous one is to apply KISS. If the system grows it would be a good idea to encapsulate the model and create whole DTO objects to communicate with the service-layer.
+  
 ## How to run
 ### Web API
 1. **Build the project:**
