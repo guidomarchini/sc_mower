@@ -2,16 +2,20 @@ package com.seatcode.mowerengine.service
 
 import com.seatcode.mowerengine.model.*
 
+data class MowerEngineInput(
+    val plateauMaxX: Int,
+    val plateauMaxY: Int,
+    val mowers: List<MowerInitData>
+)
+
 data class MowerInitData(
     val coordinates: Coordinates,
     val direction: Direction,
     val actions: List<MowerAction>
 )
 
-data class MowerEngineInput(
-    val plateauMaxX: Int,
-    val plateauMaxY: Int,
-    val mowers: List<MowerInitData>
+data class MowerEngineResult(
+    val mowerResults: List<MowerResult>
 )
 
 data class MowerResult(
@@ -27,8 +31,4 @@ data class MowerResult(
         }
     }
 }
-
-data class MowerEngineResult(
-    val mowers: List<MowerResult>
-)
 

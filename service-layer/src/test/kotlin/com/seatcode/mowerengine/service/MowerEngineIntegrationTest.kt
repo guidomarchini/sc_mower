@@ -34,11 +34,11 @@ class MowerEngineIntegrationTest {
         // Act
         val result: MowerEngineResult = engine.execute(input)
         // Assert
-        assertEquals(2, result.mowers.size)
-        assertEquals(Coordinates(0, 4), result.mowers[0].coordinates)
-        assertEquals(Direction.WEST, result.mowers[0].direction)
-        assertEquals(Coordinates(5, 2), result.mowers[1].coordinates)
-        assertEquals(Direction.SOUTH, result.mowers[1].direction)
+        assertEquals(2, result.mowerResults.size)
+        assertEquals(Coordinates(0, 4), result.mowerResults[0].coordinates)
+        assertEquals(Direction.WEST, result.mowerResults[0].direction)
+        assertEquals(Coordinates(5, 2), result.mowerResults[1].coordinates)
+        assertEquals(Direction.SOUTH, result.mowerResults[1].direction)
     }
 
     @Test
@@ -64,13 +64,13 @@ class MowerEngineIntegrationTest {
         // Act
         val result: MowerEngineResult = engine.execute(input)
         // Assert
-        assertEquals(2, result.mowers.size)
+        assertEquals(2, result.mowerResults.size)
         // Mower1: couldn't move north due to occupied position
         // nor West due to plateau bounds
-        assertEquals(Coordinates(0, 0), result.mowers[0].coordinates)
-        assertEquals(Direction.WEST, result.mowers[0].direction)
+        assertEquals(Coordinates(0, 0), result.mowerResults[0].coordinates)
+        assertEquals(Direction.WEST, result.mowerResults[0].direction)
         // Mower2: could move North
-        assertEquals(Coordinates(0, 2), result.mowers[1].coordinates)
-        assertEquals(Direction.NORTH, result.mowers[1].direction)
+        assertEquals(Coordinates(0, 2), result.mowerResults[1].coordinates)
+        assertEquals(Direction.NORTH, result.mowerResults[1].direction)
     }
 }

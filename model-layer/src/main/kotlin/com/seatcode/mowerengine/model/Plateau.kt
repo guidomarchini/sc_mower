@@ -15,16 +15,8 @@ class Plateau(
         return false
     }
 
-    fun removeMower(mower: Mower): Boolean {
-        return this.mowers.remove(mower)
-    }
-
     fun getMowers(): List<Mower> {
         return this.mowers.toList()
-    }
-
-    fun isOccupied(coordinates: Coordinates): Boolean {
-        return this.mowers.any { it.getCurrentCoordinates() == coordinates }
     }
 
     fun areValidCoordinates(coordinates: Coordinates): Boolean {
@@ -33,5 +25,9 @@ class Plateau(
             && coordinates.y >= 0
             && coordinates.y <= this.maxY
             && !isOccupied(coordinates)
+    }
+
+    private fun isOccupied(coordinates: Coordinates): Boolean {
+        return this.mowers.any { it.getCurrentCoordinates() == coordinates }
     }
 }
