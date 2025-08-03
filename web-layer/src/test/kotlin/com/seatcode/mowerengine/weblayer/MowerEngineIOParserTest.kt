@@ -126,4 +126,3 @@ class MowerEngineIOParserTest {
         assertEquals(expected, actual)
     }
 }
-
