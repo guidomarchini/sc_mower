@@ -8,23 +8,15 @@ class Plateau(
 
     fun addMower(mower: Mower): Boolean {
         val coordinates: Coordinates = mower.getCurrentCoordinates()
-        if (areValidCoordinates(coordinates) && !isOccupied(coordinates)) {
-            mowers.add(mower)
+        if (areValidCoordinates(coordinates)) {
+            this.mowers.add(mower)
             return true
         }
         return false
     }
 
-    fun removeMower(mower: Mower): Boolean {
-        return mowers.remove(mower)
-    }
-
     fun getMowers(): List<Mower> {
-        return mowers.toList()
-    }
-
-    fun isOccupied(coordinates: Coordinates): Boolean {
-        return mowers.any { it.getCurrentCoordinates() == coordinates }
+        return this.mowers.toList()
     }
 
     fun areValidCoordinates(coordinates: Coordinates): Boolean {
@@ -33,5 +25,9 @@ class Plateau(
             && coordinates.y >= 0
             && coordinates.y <= this.maxY
             && !isOccupied(coordinates)
+    }
+
+    private fun isOccupied(coordinates: Coordinates): Boolean {
+        return this.mowers.any { it.getCurrentCoordinates() == coordinates }
     }
 }

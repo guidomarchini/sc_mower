@@ -1,0 +1,56 @@
+@startuml
+' Model Layer Class Diagram
+
+package "model-layer" {
+
+    class Coordinates {
+        x: Int
+        y: Int
+    }
+
+    abstract class Direction {
+        +rotateLeft(): Direction
+        +rotateRight(): Direction
+        +moveForward(position: Coordinates): Coordinates
+    }
+
+    class North
+    class South
+    class East
+    class West
+
+    class Mower {
+        position: Coordinates
+        direction: Direction
+        +getCurrentCoordinates(): Coordinates
+        +getCurrentDirection(): Direction
+        ...
+    }
+
+    abstract class MowerAction
+    class RotateLeft
+    class RotateRight
+    class MoveForward
+
+    class Plateau {
+        maxX: Int
+        maxY: Int
+        +addMower(mower: Mower): Boolean
+        +areValidCoordinates(coordinates: Coordinates): Boolean
+        ...
+    }
+}
+
+' Relationships
+Direction <|-- North
+Direction <|-- South
+Direction <|-- East
+Direction <|-- West
+MowerAction <|-- RotateLeft
+MowerAction <|-- RotateRight
+MowerAction <|-- MoveForward
+Mower --> Coordinates
+Mower --> Direction
+Plateau --> Mower
+
+@enduml

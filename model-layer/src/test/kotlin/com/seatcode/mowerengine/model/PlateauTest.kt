@@ -103,7 +103,6 @@ class PlateauTest {
         val added: Boolean = plateau.addMower(mower)
         // Assert
         assertTrue(added)
-        assertTrue(plateau.isOccupied(Coordinates(1, 1)))
     }
 
     @Test
@@ -117,25 +116,6 @@ class PlateauTest {
         val added: Boolean = plateau.addMower(mower2)
         // Assert
         assertFalse(added)
-        assertTrue(plateau.isOccupied(Coordinates(3, 3)))
         assertEquals(1, plateau.getMowers().size)
-    }
-
-    @Test
-    fun `isOccupied should return true if a mower is at the position`() {
-        // Arrange
-        val plateau: Plateau = Plateau(5, 5)
-        val mower: Mower = Mower(Coordinates(4, 4), Direction.NORTH)
-        plateau.addMower(mower)
-        // Act & Assert
-        assertTrue(plateau.isOccupied(Coordinates(4, 4)))
-    }
-
-    @Test
-    fun `isOccupied should return false if no mower is at the position`() {
-        // Arrange
-        val plateau: Plateau = Plateau(5, 5)
-        // Act & Assert
-        assertFalse(plateau.isOccupied(Coordinates(0, 0)))
     }
 }

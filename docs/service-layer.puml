@@ -1,0 +1,58 @@
+@startuml
+' Service Layer Class Diagram
+
+package service-layer {
+
+    class MowerEngineInput {
+        +plateauMaxX: Int
+        +plateauMaxY: Int
+        +mowers: List<MowerInitData>
+    }
+
+    class MowerInitData {
+        +coordinates: Coordinates
+        +direction: Direction
+        +actions: List<MowerAction>
+    }
+
+    class MowerEngineResult {
+        +mowerResults: List<MowerResult>
+    }
+
+    class MowerResult {
+        +coordinates: Coordinates
+        +direction: Direction
+        +fromMower(mower: Mower): MowerResult
+    }
+
+    class MowerEngine {
+        +execute(input: MowerEngineInput): MowerEngineResult
+    }
+
+    class MowerEngineInputValidator {
+        +validate(input: MowerEngineInput): Unit
+    }
+
+    abstract class MowerActionHandler {
+        +handle(mower: Mower, plateau: Plateau): Unit
+        +supports(action: MowerAction): Boolean
+    }
+
+    class RotateLeftHandler extends MowerActionHandler
+    class RotateRightHandler extends MowerActionHandler
+    class MoveForwardHandler extends MowerActionHandler
+}
+
+' Relationships
+MowerEngineInput --> MowerInitData
+MowerEngineResult --> MowerResult
+MowerEngine --> MowerEngineInput
+MowerEngine --> MowerEngineResult
+MowerEngine --> MowerActionHandler
+MowerEngineInputValidator --> MowerEngineInput
+MowerActionHandler <|-- RotateLeftHandler
+MowerActionHandler <|-- RotateRightHandler
+MowerActionHandler <|-- MoveForwardHandler
+
+@enduml
+
