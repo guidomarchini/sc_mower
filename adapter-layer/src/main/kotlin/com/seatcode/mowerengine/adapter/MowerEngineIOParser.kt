@@ -1,4 +1,4 @@
-package com.seatcode.mowerengine.weblayer
+package com.seatcode.mowerengine.adapter
 
 import com.seatcode.mowerengine.model.*
 import com.seatcode.mowerengine.service.MowerEngineInput
@@ -13,7 +13,6 @@ object MowerEngineIOParser {
         "W" to Direction.WEST
     )
     private val reverseDirectionMap: Map<Direction, String> = directionMap.entries.associate { (k, v) -> v to k }
-
 
     fun parseInput(input: String): MowerEngineInput {
         val lines: List<String> = input.lines().filter { it.isNotBlank() }
@@ -37,11 +36,8 @@ object MowerEngineIOParser {
     ): MowerInitData {
         val (x: String, y: String, dir: String) = lines[i].split(" ")
         val coordinates: Coordinates = Coordinates(x.toInt(), y.toInt())
-
         val direction: Direction = parseDirection(dir)
-
         val actions: List<MowerAction> = lines[i + 1].map { parseMowerAction(it) }
-
         return MowerInitData(coordinates, direction, actions)
     }
 
@@ -58,7 +54,6 @@ object MowerEngineIOParser {
         }
     }
 
-
     fun formatOutput(mowerEngineResult: MowerEngineResult): List<String> {
         return mowerEngineResult.mowerResults.map {
             "${it.coordinates.x} ${it.coordinates.y} ${formatDirection(it.direction)}"
@@ -68,5 +63,5 @@ object MowerEngineIOParser {
     fun formatDirection(direction: Direction): String {
         return reverseDirectionMap[direction] ?: throw IllegalArgumentException("Invalid direction: $direction")
     }
-
 }
+

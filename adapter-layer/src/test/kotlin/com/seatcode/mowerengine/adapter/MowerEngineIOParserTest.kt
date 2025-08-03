@@ -1,4 +1,4 @@
-package com.seatcode.mowerengine.weblayer
+package com.seatcode.mowerengine.adapter
 
 import com.seatcode.mowerengine.model.Coordinates
 import com.seatcode.mowerengine.model.Direction
@@ -126,3 +126,4 @@ class MowerEngineIOParserTest {
         assertEquals(expected, actual)
     }
 }
+
