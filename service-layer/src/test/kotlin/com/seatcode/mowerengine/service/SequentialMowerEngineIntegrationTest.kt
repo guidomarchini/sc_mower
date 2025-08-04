@@ -3,6 +3,10 @@ package com.seatcode.mowerengine.service
 import com.seatcode.mowerengine.model.Coordinates
 import com.seatcode.mowerengine.model.Direction
 import com.seatcode.mowerengine.model.MowerAction
+import com.seatcode.mowerengine.service.handler.MoveForwardHandler
+import com.seatcode.mowerengine.service.handler.MowerActionHandler
+import com.seatcode.mowerengine.service.handler.RotateLeftHandler
+import com.seatcode.mowerengine.service.handler.RotateRightHandler
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

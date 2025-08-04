@@ -2,6 +2,7 @@ package com.seatcode.mowerengine.service
 
 import com.seatcode.mowerengine.model.Mower
 import com.seatcode.mowerengine.model.Plateau
+import com.seatcode.mowerengine.service.handler.MowerActionHandler
 import com.seatcode.mowerengine.service.utils.MowerWithActions
 
 class ActionByActionMowerEngine(
