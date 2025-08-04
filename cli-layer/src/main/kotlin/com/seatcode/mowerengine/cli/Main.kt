@@ -2,6 +2,9 @@ package com.seatcode.mowerengine.cli
 
 import com.seatcode.mowerengine.adapter.MowerEngineIOParser
 import com.seatcode.mowerengine.service.*
+import com.seatcode.mowerengine.service.handler.MoveForwardHandler
+import com.seatcode.mowerengine.service.handler.RotateLeftHandler
+import com.seatcode.mowerengine.service.handler.RotateRightHandler
 import com.seatcode.mowerengine.service.utils.LoggingMowerEngineDecorator
 
 fun main() {
