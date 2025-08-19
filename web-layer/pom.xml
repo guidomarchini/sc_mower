@@ -60,7 +60,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.seatcode.mowerengine.weblayer.ScMowerApplication</mainClass>
+                    <mainClass>com.seatcode.mowerengine.weblayer.ScMowerApplicationKt</mainClass>
                 </configuration>
             </plugin>
         </plugins>
