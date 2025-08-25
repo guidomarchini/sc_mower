@@ -1,9 +1,7 @@
 # sc_mower
 
 ## Overview
-This project is a solution to the SEAT:CODE mower control coding challenge.
-
-It demonstrates a DDD-inspired, modular, and testable architecture using Kotlin and Maven.
+This project demonstrates a DDD-inspired, modular, and testable architecture using Kotlin and Maven.
 
 The application allows controlling robotic mowers on a rectangular plateau, processing movement instructions and reporting their final positions.
 
